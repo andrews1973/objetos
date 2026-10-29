@@ -204,21 +204,29 @@ Crea un objeto cuentaBancaria con las propiedades titular, saldo. Añade método
 const cuentaBancaria = {
     titular: 'Andrés',
     saldo: 1500,
+    mensaje:'',
     retirar (cantidad) {
-        if (this.saldo - cantidad < 0){
-            console.log(`Saldo disponible: ${this.saldo} por tanto usted no puede retirar ${cantidad}`);
+        if (this.saldo - cantidad <= 0){
+            this.mensaje = `Saldo disponible: ${this.saldo} por tanto usted no puede retirar ${cantidad}`;
         } else {
             this.saldo -=cantidad
+            this.mensaje ="Su retirada ha sido realizada"
         }       
     },
     depositar(cantidad){
          this.saldo +=cantidad
+         this.mensaje ="Su deposito ha sido realizado"
     }
 };
 
 cuentaBancaria.depositar(100)
+console.log(cuentaBancaria.mensaje);
 console.log(cuentaBancaria.saldo);
+
 cuentaBancaria.retirar(1000)
 console.log(cuentaBancaria.saldo);
+console.log(cuentaBancaria.mensaje);
+
 cuentaBancaria.retirar(1000)
+console.log(cuentaBancaria.mensaje);
 console.log(cuentaBancaria.saldo);
